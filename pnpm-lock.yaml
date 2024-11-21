@@ -44,7 +44,7 @@ devDependencies:
         specifier: ^15.2.2
         version: 15.2.10
     miniflare:
-        specifier: ^3.20240223.0
+        specifier: ^3.20241106.0
         version: 3.20241106.0
     prettier:
         specifier: ^3.2.5

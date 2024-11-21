@@ -36,10 +36,12 @@ export async function compile(argv: Arguments<CompileArgs>): Promise<void> {
 		console.log(inspect(toml, { compact: true, depth: 10, breakLength: 80 }));
 	}
 
+	console.log("Options: ", workerOptions);
 	const mf = new Miniflare({
-		scriptPath: argv.script,
 		...workerOptions,
 		modules: true,
+		scriptPath: argv.script,
+		unsafeEphemeralDurableObjects: true,
 		modulesRules: toml.rules?.map((r: any) => ({
 			type: r.type,
 			fallthrough: r.fallthrough,
@@ -47,6 +49,8 @@ export async function compile(argv: Arguments<CompileArgs>): Promise<void> {
 		})),
 	});
 	await mf.ready;
+
+	console.log("unsafeGetPersistPaths: ", mf.unsafeGetPersistPaths());
 
 	// @ts-expect-error private method usage
 	const port = await mf.getLoopbackPort();
