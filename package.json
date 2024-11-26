@@ -19,7 +19,6 @@
 		"dist"
 	],
 	"scripts": {
-		"prepare": "husky",
 		"patch:mf": "tsx scripts/patch-miniflare.ts",
 		"build": "pnpm run patch:mf && tsup",
 		"changeset": "changeset",

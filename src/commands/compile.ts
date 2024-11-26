@@ -50,7 +50,7 @@ export async function compile(argv: Arguments<CompileArgs>): Promise<void> {
 	});
 	await mf.ready;
 
-	console.log("unsafeGetPersistPaths: ", mf.unsafeGetPersistPaths());
+	// console.log("unsafeGetPersistPaths: ", mf.unsafeGetPersistPaths());
 
 	// @ts-expect-error private method usage
 	const port = await mf.getLoopbackPort();
